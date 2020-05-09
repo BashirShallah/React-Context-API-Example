@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import One from './Components/One';
+import ToggleThemeBtn from './Components/ToggleThemeBtn';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    theme: 'dark'
+  }
+
+  toggleTheme = () => {
+    this.setState({
+      theme: this.state.theme === 'dark' ? 'light' : 'dark'
+    });
+  };
+
+  render() {
+    return (
+      <div style={{background: this.state.theme === 'dark' ? 'blue' : 'white'}}>
+        <h1>Hi from App</h1>
+        <One theme={this.state.theme} />
+
+        <ToggleThemeBtn toggleTheme={this.toggleTheme} />
+      </div>
+    );  
+  }
+  
 }
 
 export default App;
