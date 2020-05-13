@@ -1,11 +1,15 @@
 import React from 'react';
+import ToggleThemeBtn from './ToggleThemeBtn';
 import Two from './Two';
 
-function One(Props) {
+function One() {
   return (
     <div>
         <h1>Hi from One.</h1>
-        <Two theme={Props.theme} />
+
+        <Two />
+
+        <ToggleThemeBtn />
     </div>
   );
 }

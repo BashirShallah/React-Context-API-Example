@@ -1,13 +1,25 @@
 import React from 'react';
 
-function ToggleThemeBtn(Props) {
-  return (
-    <div>
-        <button onClick={Props.toggleTheme}>
-            Toggle Theme
+import ThemeContext from '../Context/ThemeContext';
+
+class ToggleThemeBtn extends React.Component{
+
+  componentDidUpdate(){
+    console.log("ToggleThemeBtn Component " + this.context.theme);
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.context.toggleTheme}>
+            Toggle Theme to {this.context.theme === 'dark' ? 'light' : 'dark'}
         </button>
-    </div>
-  );
+      </div>
+    );
+  }
+
 }
+
+ToggleThemeBtn.contextType = ThemeContext;
 
 export default ToggleThemeBtn;
